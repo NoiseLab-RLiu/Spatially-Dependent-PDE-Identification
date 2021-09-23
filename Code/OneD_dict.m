@@ -37,6 +37,7 @@ U1 = ones(N_x,Mused);
 
 %% ROI for Heat eq.
 Ix = 3:98;
+Iy = 1;
 It=2:1999;
 
 %% Build dictionary
