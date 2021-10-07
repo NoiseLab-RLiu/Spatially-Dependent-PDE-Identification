@@ -1,6 +1,16 @@
-load('Heat_sp_dp.mat');
-
-Uused = H(:,1:1:eind);
+clear all
+%% Burgers eq
+load('Burgers_idp.mat')
+Uused = Waves;
+Ix = 41:91;
+It=2:200;
+%% Heat eq
+% load('Heat_sp_dp.mat');
+% load('Heat_idp.mat');
+% Uused = H(:,1:1:eind);
+% Ix = 3:99;
+% It=2:eind-1;
+%% 
 [N_x,Mused] = size(Uused);
 method = 'FD';
 
@@ -32,24 +42,16 @@ Sinhu=zeros(N_x,Mused);
 for k = 1:Mused
         Sinhu(:,k) = sinh(Uused(:,k)*dx);
 end
-
-U1 = ones(N_x,Mused);
-
-%% ROI for Heat eq.
-Ix = 3:98;
-Iy = 1;
-It=2:1999;
-
 %% Build dictionary
 m = length(It);
 N = length(Ix);
-Theta_e_tens = zeros(m,7,N);
+Phi_tensor = zeros(m,7,N);
 for i=1:length(Ix)
-        Theta_e_tens(:,1,i) = squeeze(Ut(Ix(i),It));
-        Theta_e_tens(:,2,i) = squeeze(Utt(Ix(i),It));
-        Theta_e_tens(:,3,i) = squeeze(Uused(Ix(i),It).*Ux(Ix(i),It));
-        Theta_e_tens(:,4,i) = squeeze(Uxx(Ix(i),It));
-        Theta_e_tens(:,5,i) = squeeze(Utx(Ix(i),It));
-        Theta_e_tens(:,6,i) = squeeze(Uttxx(Ix(i),It));
-        Theta_e_tens(:,7,i) = squeeze(Sinhu(Ix(i),It));
+        Phi_tensor(:,1,i) = squeeze(Ut(Ix(i),It));
+        Phi_tensor(:,2,i) = squeeze(Utt(Ix(i),It));
+        Phi_tensor(:,3,i) = squeeze(Uused(Ix(i),It).*Ux(Ix(i),It));
+        Phi_tensor(:,4,i) = squeeze(Uxx(Ix(i),It));
+        Phi_tensor(:,5,i) = squeeze(Utx(Ix(i),It));
+        Phi_tensor(:,6,i) = squeeze(Uttxx(Ix(i),It));
+        Phi_tensor(:,7,i) = squeeze(Sinhu(Ix(i),It));
 end
