@@ -65,9 +65,9 @@ It = 2:199;
 
 U1 = ones(30,30,200);
 
-m = length(It);
+M = length(It);
 N = length(Ix)*length(Iy);
-Phi_tensor = zeros(m,11,N);
+Phi_tensor = zeros(M,11,N);
 for i=1:length(Ix)
     for j=1:length(Iy)
         Phi_tensor(:,1,length(Iy)*(i-1)+j) = squeeze(Ut(Ix(i),Iy(j),It));
