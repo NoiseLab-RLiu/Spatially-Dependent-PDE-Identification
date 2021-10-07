@@ -1,12 +1,9 @@
-clear all
+%% Please load the dataset from "Data" folder before running this code
 %% Burgers eq
-load('Data/Burgers_idp.mat')
 Uused = Waves;
 Ix = 41:91;
 It=2:200;
 %% Heat eq
-% load('Data/Heat_sp_dp.mat');
-% load('Data/Heat_idp.mat');
 % Uused = H(:,1:1:eind);
 % Ix = 3:99;
 % It=2:eind-1;
