@@ -1,12 +1,12 @@
 %% Please load the dataset from "Data" folder before running this code
 %% Burgers eq
-Uused = Waves;
-Ix = 41:91;
-It=2:200;
+% Uused = Waves;
+% Ix = 41:91;
+% It=2:200;
 %% Heat eq
-% Uused = H(:,1:1:eind);
-% Ix = 3:99;
-% It=2:eind-1;
+Uused = H(:,1:1:eind);
+Ix = 3:99;
+It=2:eind-1;
 %% 
 [N_x,Mused] = size(Uused);
 method = 'FD';
@@ -40,9 +40,9 @@ for k = 1:Mused
         Sinhu(:,k) = sinh(Uused(:,k));
 end
 %% Build dictionary
-m = length(It);
+M = length(It);
 N = length(Ix);
-Phi_tensor = zeros(m,7,N);
+Phi_tensor = zeros(M,7,N);
 for i=1:length(Ix)
         Phi_tensor(:,1,i) = squeeze(Ut(Ix(i),It));
         Phi_tensor(:,2,i) = squeeze(Utt(Ix(i),It));
