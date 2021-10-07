@@ -1,28 +1,37 @@
-Theta_e_r1 = permute(Theta_e_tens,[1 3 2]);
-Theta = reshape(Theta_e_r1, size(Theta_e_tens,1)*size(Theta_e_tens,3), size(Theta_e_tens,2));
+Phi_e_r1 = permute(Phi_tensor,[1 3 2]);
+Phi = reshape(Phi_e_r1, size(Phi_tensor,1)*size(Phi_tensor,3), size(Phi_tensor,2));
 %% sbl
 lambda=1e-3;
 Learn_Lambda=0;
-X = zeros(size(Theta,2)-1,size(Theta,2));
-ebar = zeros(size(Theta,2),1);
+ETime = zeros(10,1);
+
+for repeatance=1:10
+X = zeros(size(Phi,2)-1,size(Phi,2));
+ebar = zeros(size(Phi,2),1);
 tic
-for i=1:size(Theta,2)
-    inds_kept = 1:size(Theta,2);
+for i=1:size(Phi,2)
+    inds_kept = 1:size(Phi,2);
     inds_kept(i) = [];
-    [X(:,i),gamma_ind,gamma_est,count,ebar(i)] = MSBL(Theta(:,inds_kept),Theta(:,i), lambda, Learn_Lambda);
+    [X(:,i),gamma_ind,gamma_est,count,ebar(i)] = MSBL(Phi(:,inds_kept), Phi(:,i), lambda, Learn_Lambda);
 end
-toc
-
 [minebar,indminebar] = min(ebar);
-
+ETime(repeatance) = toc;
+end
+mean(ETime)
 %% lasso (proposed method)
-s=[1,1,1,-1,-1,-1,1]; % 1D
-%s=[1,1,1,1,-1,-1,-1,-1,-1,-1,1]; %2D
+%s=[1,1,1,-1,-1,-1,1]; % 1D
+s=[1,1,1,1,-1,-1,-1,-1,-1,-1,1]; %2D
 
-e = zeros(size(Theta,1)+1,1);
+e = zeros(size(Phi,1)+1,1);
 e(end)=1;
 
-Theta_e = [normc(Theta);s];
+Phi_e = [normc(Phi);s];
+
+ETime = zeros(10,1);
+
+for repeatance=1:10
 tic
-xl = lasso(Theta_e,e,'Lambda',max(abs(Theta_e'*e))*0.2/length(e),'Intercept',false)
-toc
+[xl,stat] = lasso(Phi_e,e,'Lambda',max(abs(Phi_e'*e))*0.2/length(e),'Intercept',false,'RelTol',10^(-8));%,'UseCovariance',0)
+ETime(repeatance) = toc;
+end
+mean(ETime)
