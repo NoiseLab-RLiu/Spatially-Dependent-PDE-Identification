@@ -40,7 +40,7 @@ end
 
 Sinhu=zeros(N_x,Mused);
 for k = 1:Mused
-        Sinhu(:,k) = sinh(Uused(:,k)*dx);
+        Sinhu(:,k) = sinh(Uused(:,k));
 end
 %% Build dictionary
 m = length(It);
