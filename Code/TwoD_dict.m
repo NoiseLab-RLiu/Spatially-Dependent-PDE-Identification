@@ -1,6 +1,7 @@
+%%  Please load the dataset from "Data" folder before running this code
 %%    
 % space derivatives
-Uused = Waves(:,:,1:1:200);
+Uused = Waves;
 [N_x,N_y,Mused] = size(Uused);
 method = 'FD';
 
@@ -66,20 +67,20 @@ U1 = ones(30,30,200);
 
 m = length(It);
 N = length(Ix)*length(Iy);
-Theta_e_tens = zeros(m,11,N);
+Phi_tensor = zeros(m,11,N);
 for i=1:length(Ix)
     for j=1:length(Iy)
-        Theta_e_tens(:,1,length(Iy)*(i-1)+j) = squeeze(Ut(Ix(i),Iy(j),It));
-        Theta_e_tens(:,2,length(Iy)*(i-1)+j) = squeeze(Utt(Ix(i),Iy(j),It));
-        Theta_e_tens(:,3,length(Iy)*(i-1)+j) = squeeze(Uused(Ix(i),Iy(j),It).*Ux(Ix(i),Iy(j),It));
-        Theta_e_tens(:,4,length(Iy)*(i-1)+j) = squeeze(Uused(Ix(i),Iy(j),It).*Uy(Ix(i),Iy(j),It));
-        Theta_e_tens(:,5,length(Iy)*(i-1)+j) = squeeze(Uxx(Ix(i),Iy(j),It));
-        Theta_e_tens(:,6,length(Iy)*(i-1)+j) = squeeze(Uyy(Ix(i),Iy(j),It));
-        Theta_e_tens(:,7,length(Iy)*(i-1)+j) = squeeze(Utx(Ix(i),Iy(j),It));
-        Theta_e_tens(:,8,length(Iy)*(i-1)+j) = squeeze(Uttxx(Ix(i),Iy(j),It));
-        Theta_e_tens(:,9,length(Iy)*(i-1)+j) = squeeze(Uty(Ix(i),Iy(j),It));
-        Theta_e_tens(:,10,length(Iy)*(i-1)+j) = squeeze(Uttyy(Ix(i),Iy(j),It));
-        Theta_e_tens(:,11,length(Iy)*(i-1)+j) = squeeze(SinhU(Ix(i),Iy(j),It));
+        Phi_tensor(:,1,length(Iy)*(i-1)+j) = squeeze(Ut(Ix(i),Iy(j),It));
+        Phi_tensor(:,2,length(Iy)*(i-1)+j) = squeeze(Utt(Ix(i),Iy(j),It));
+        Phi_tensor(:,3,length(Iy)*(i-1)+j) = squeeze(Uused(Ix(i),Iy(j),It).*Ux(Ix(i),Iy(j),It));
+        Phi_tensor(:,4,length(Iy)*(i-1)+j) = squeeze(Uused(Ix(i),Iy(j),It).*Uy(Ix(i),Iy(j),It));
+        Phi_tensor(:,5,length(Iy)*(i-1)+j) = squeeze(Uxx(Ix(i),Iy(j),It));
+        Phi_tensor(:,6,length(Iy)*(i-1)+j) = squeeze(Uyy(Ix(i),Iy(j),It));
+        Phi_tensor(:,7,length(Iy)*(i-1)+j) = squeeze(Utx(Ix(i),Iy(j),It));
+        Phi_tensor(:,8,length(Iy)*(i-1)+j) = squeeze(Uttxx(Ix(i),Iy(j),It));
+        Phi_tensor(:,9,length(Iy)*(i-1)+j) = squeeze(Uty(Ix(i),Iy(j),It));
+        Phi_tensor(:,10,length(Iy)*(i-1)+j) = squeeze(Uttyy(Ix(i),Iy(j),It));
+        Phi_tensor(:,11,length(Iy)*(i-1)+j) = squeeze(SinhU(Ix(i),Iy(j),It));
     end
 end
  
