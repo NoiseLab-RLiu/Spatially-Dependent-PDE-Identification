@@ -1,12 +1,12 @@
 clear all
 %% Burgers eq
-load('Burgers_idp.mat')
+load('Data/Burgers_idp.mat')
 Uused = Waves;
 Ix = 41:91;
 It=2:200;
 %% Heat eq
-% load('Heat_sp_dp.mat');
-% load('Heat_idp.mat');
+% load('Data/Heat_sp_dp.mat');
+% load('Data/Heat_idp.mat');
 % Uused = H(:,1:1:eind);
 % Ix = 3:99;
 % It=2:eind-1;
