@@ -57,7 +57,7 @@ for k = 1:Mused
     end
 end
 
-SinhU = sinh(Uused);
+SinU = sin(Uused);
 
 Ix = 3:30;
 Iy = 3:30;
@@ -80,7 +80,7 @@ for i=1:length(Ix)
         Phi_tensor(:,8,length(Iy)*(i-1)+j) = squeeze(Uttxx(Ix(i),Iy(j),It));
         Phi_tensor(:,9,length(Iy)*(i-1)+j) = squeeze(Uty(Ix(i),Iy(j),It));
         Phi_tensor(:,10,length(Iy)*(i-1)+j) = squeeze(Uttyy(Ix(i),Iy(j),It));
-        Phi_tensor(:,11,length(Iy)*(i-1)+j) = squeeze(SinhU(Ix(i),Iy(j),It));
+        Phi_tensor(:,11,length(Iy)*(i-1)+j) = squeeze(SinU(Ix(i),Iy(j),It));
     end
 end
  
