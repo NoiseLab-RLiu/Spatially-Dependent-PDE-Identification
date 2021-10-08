@@ -35,9 +35,9 @@ for k = 1:Mused
         Uttxx(:,k) = numder(Utt(:,k),dx,2,method);
 end
 
-Sinhu=zeros(N_x,Mused);
+Sinu=zeros(N_x,Mused);
 for k = 1:Mused
-        Sinhu(:,k) = sinh(Uused(:,k));
+        Sinu(:,k) = sin(Uused(:,k));
 end
 %% Build dictionary
 M = length(It);
@@ -50,5 +50,5 @@ for i=1:length(Ix)
         Phi_tensor(:,4,i) = squeeze(Uxx(Ix(i),It));
         Phi_tensor(:,5,i) = squeeze(Utx(Ix(i),It));
         Phi_tensor(:,6,i) = squeeze(Uttxx(Ix(i),It));
-        Phi_tensor(:,7,i) = squeeze(Sinhu(Ix(i),It));
+        Phi_tensor(:,7,i) = squeeze(Sinu(Ix(i),It));
 end
