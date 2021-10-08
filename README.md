@@ -3,15 +3,14 @@
 The codes are in the "Code" folder. The dataset used by the codes are in the "Data" folder.
 
 In the "Data" folder:
-(1) Waves_2d_sp_dp.mat are the 2D waves governed by spatially-dependent wave equations.
-(2) Waves_2d_nat_idp.mat are the 2D waves governed by spatially-independent non-attenuating wave equation.
-(3) Waves_2d_at_idp.mat are the 2D waves governed by spatially-independent attenuating wave equation.
-(4) Heat_sp_dp.mat are the data for spatially-dependent heat equation simulation.
-(5) Heat_idp.mat are the data for spatially-independent heat equation simulation.
+(1) "Spatially-Dependent" contains 2 fields governed by spatially-dependent heat equation and 2D wave equations. 
+(2) "Spatially-Independent" contains 4 fields governed by spatially-independent PDEs: Burgers equation, heat equation, 2D non-attenuating wave equation and 2D attenuating wave equation.
 
 For the codes:
-First, use OneD_dict.m or TwoD_dict.m to generate dictionaries.
-Second, use the lasso_par to identify the active terms.
-Third, use recover_a_c2dwave.m or recover_a_heat.m to recover physical parameters.
+1, load the desired dataset from "Data" folder.
+2, use OneD_dict.m or TwoD_dict.m to generate dictionaries.
+3(a), use the lasso_seq to identify the active terms of the spatially-dependent PDEs for various locations sequentially.
+or 
+3(b), use comp_sbl to compare the efficiency for identifying spatially-independent PDEs between this method and the SBL with errorbars method. Codes for another baseline method, i.e., the cross-validation based method, is at: https://github.com/NoiseLab-RLiu/Automate-PDE-identification 
+4, use recover_c_a2dwave.m (for spatially-dependent 2D wave eq.) or recover_param_1d.m (for Burgers eq., spatially-dependent heat eq.) to recover physical parameters.
 
-The comp_sbl.m is used to compare efficiency between the proposed method and the SBL with error bars method for identifying spatially-independent PDEs.
