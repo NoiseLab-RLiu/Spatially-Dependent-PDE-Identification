@@ -1,6 +1,6 @@
 # Spatially-Dependent-PDE-Identification
 
-The codes are in the "Code" folder. The dataset used by the codes are in the "Data" folder.
+The codes working on MATLAB R2021b are in the "Code" folder. The dataset used by the codes are in the "Data" folder.
 
 In the "Data" folder:
 
