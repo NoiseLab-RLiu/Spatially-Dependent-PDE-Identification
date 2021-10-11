@@ -23,7 +23,7 @@ for i=1:N
     tar = zeros(size(Phi_s,1)+1,1);
     tar(end) = 1;
     % set lambda
-    lam=0.2*max(abs(Phi_ext'*tar))/length(tar);
+    lam=0.2*max(abs(Phi_ext'*tar))/length(tar); % scaled by 1/length(tar) because MATLAB automatically scales the coefficient for ||Phi*a-tar||_2^2 by 1/(2*length(tar))
     % lasso
     [a_ext_tmp, s] = lasso(Phi_ext,tar,'Lambda',lam,'Intercept',false,'RelTol',1e-8,'MaxIter',10^7);
     a_raw(:,i) = a_ext_tmp;
